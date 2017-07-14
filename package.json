@@ -1,0 +1,30 @@
+{
+  "name": "assembly-chrono",
+  "version": "1.0.0",
+  "description": "Assembly timer made with Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kutyel/assembly-chrono.git"
+  },
+  "keywords": [
+    "node",
+    "electron",
+    "timer",
+    "chrono",
+    "assembly"
+  ],
+  "author": "kutyel <flaviocorpa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kutyel/assembly-chrono/issues"
+  },
+  "homepage": "https://github.com/kutyel/assembly-chrono#readme",
+  "devDependencies": {
+    "electron": "^1.6.11"
+  }
+}
