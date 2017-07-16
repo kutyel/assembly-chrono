@@ -1,18 +1,17 @@
 let countdown
-const timerDisplay = document.querySelector('.display__time-left')
-const endTime = document.querySelector('.display__end-time')
 const buttons = document.querySelectorAll('[data-time]')
+const timerDisplay = document.querySelector('.display__time-left')
 
 const timer = secs => {
   clearInterval(countdown)
+  timerDisplay.classList.remove('timer__end')
   const now = Date.now()
   const then = now + secs * 1000
   displayTime(secs)
-  displayEndTime(then)
 
   countdown = setInterval(() => {
     const left = Math.round((then - Date.now()) / 1000)
-    left <= 0 && clearInterval(countdown)
+    left <= 0 && timerDisplay.classList.add('timer__end')
     displayTime(left)
   }, 1000)
 }
@@ -23,13 +22,6 @@ const displayTime = secs => {
   const display = `${mins}:${remainder < 10 ? '0' : ''}${remainder}`
   timerDisplay.textContent = display
   document.title = display
-}
-
-const displayEndTime = stamp => {
-  const end = new Date(stamp)
-  const hours = end.getHours()
-  const mins = end.getMinutes()
-  endTime.textContent = `Be Back At ${hours}:${mins < 10 ? '0' : ''}${mins}`
 }
 
 function startTimer () {
