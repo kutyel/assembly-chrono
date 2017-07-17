@@ -59,3 +59,9 @@ typings/
 
 # editors
 .vscode
+
+# electron
+build
+dist
+
+.DS_Store

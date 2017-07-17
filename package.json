@@ -1,9 +1,12 @@
 {
   "name": "assembly-chrono",
+  "productName": "Assembly Chrono",
   "version": "1.0.0",
   "description": "Assembly timer made with Electron",
   "main": "index.js",
   "scripts": {
+    "build": "build",
+    "icon": "electron-icon-maker -i assets/icon.png -o build/",
     "start": "electron index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +28,12 @@
   },
   "homepage": "https://github.com/kutyel/assembly-chrono#readme",
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron": "^1.6.11",
+    "electron-builder": "^19.16.0",
+    "electron-icon-maker": "0.0.3"
+  },
+  "build": {
+    "appId": "com.kutyel.assembly-chrono",
+    "files": "!assets${/*}"
   }
 }
