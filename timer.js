@@ -25,12 +25,15 @@ const timer = secs => {
   }, 1000)
 }
 
+const neg = n => n < 0 ? n * -1 : n
 const pad = s => (`00${s}`).slice(-2)
+const min = s => s < 0 && s > -60 ? '-' : ''
+const adj = (m, s) => s < 0 ? s === 0 ? m + 2 : m + 1 : pad(m)
 
 const displayTime = secs => {
   const mins = Math.floor(secs / 60)
-  const remainder = secs % 60
-  const display = `${pad(mins)}:${pad(remainder < 0 ? remainder * -1 : remainder)}`
+  const rem = secs % 60
+  const display = `${min(secs)}${adj(mins, rem)}:${pad(neg(rem))}`
   timerDisplay.textContent = display
   document.title = display
 }
