@@ -2,8 +2,17 @@ let countdown
 const buttons = document.querySelectorAll('[data-time]')
 const timerDisplay = document.querySelector('.display__time-left')
 
+const changeColor = red => document.documentElement.style.setProperty('background',
+  `linear-gradient(45deg,
+    #${red ? 'f5424e' : '42a5f5'} 0%,
+    #${red ? 'cb2a23' : '478ed1'} 50%,
+    #${red ? 'a1230d' : '0d47a1'} 100%
+  )`
+)
+
 const timer = secs => {
   clearInterval(countdown)
+  changeColor()
   timerDisplay.classList.remove('timer__end')
   const now = Date.now()
   const then = now + secs * 1000
@@ -11,15 +20,17 @@ const timer = secs => {
 
   countdown = setInterval(() => {
     const left = Math.round((then - Date.now()) / 1000)
-    left <= 0 && timerDisplay.classList.add('timer__end')
+    left <= 0 && (timerDisplay.classList.add('timer__end') || changeColor(true))
     displayTime(left)
   }, 1000)
 }
 
+const pad = s => (`00${s}`).slice(-2)
+
 const displayTime = secs => {
   const mins = Math.floor(secs / 60)
   const remainder = secs % 60
-  const display = `${mins}:${remainder < 10 ? '0' : ''}${remainder}`
+  const display = `${pad(mins)}:${pad(remainder < 0 ? remainder * -1 : remainder)}`
   timerDisplay.textContent = display
   document.title = display
 }
