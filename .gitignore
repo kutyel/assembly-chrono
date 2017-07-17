@@ -61,7 +61,7 @@ typings/
 .vscode
 
 # electron
-build
+assets
 dist
 
 .DS_Store
